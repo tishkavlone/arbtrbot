@@ -1,0 +1,10 @@
+.env
+__pacache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.sqlite3
+*.db
+logs/
+*.log
