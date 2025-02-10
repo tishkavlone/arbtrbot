@@ -41,8 +41,8 @@ class BybitAPIException(Exception):
 class BybitClient:
     def __init__(self,
                 credentials: Optional[BybitCredentials] = None,
-                rate_limit: float = 0.05,
-                max_concurrent_requests: int = 50):
+                rate_limit: float = 0.0083,
+                max_concurrent_requests: int = 600):
         self.credentials = credentials if credentials else None
         self.base_url = "https://api-testnet.bybit.com/v5" if credentials and credentials.testnet else "https://api.bybit.com/v5"
         self._session: Optional[aiohttp.ClientSession] = None
