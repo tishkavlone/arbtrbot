@@ -3,6 +3,7 @@ from bot.services.api.bybit import BybitClient, BybitAPIException
 from bot.services.api.bingx import BingXClient, BingXAPIException
 from bot.services.api.bitget import BitgetClient, BitgetAPIException
 from bot.services.api.bitmart import BitMartClient, BitMartAPIException
+from bot.services.api.coinbase import CoinBaseClient, CoinBaseAPIException
 
 async def get_bybit():
     async with BybitClient() as client:
@@ -45,6 +46,16 @@ async def get_bitmart():
             print(f"Erorr: {e}")
             
             
-asyncio.run(get_bitmart())
+async def get_coinbase():
+    async with CoinBaseClient() as client:
+        try:
+            trading_pairs = await client.get_trading_pairs()
+            order_books = await client.get_all_orderbooks(trading_pairs)
+            print(order_books)
+        except BitMartAPIException as e:
+            print(f"Erorr: {e}")
+            
+            
+asyncio.run(get_coinbase())
 
       
